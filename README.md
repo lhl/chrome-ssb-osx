@@ -8,14 +8,14 @@ I've updated it a bit to work better:
 * Allow spaces in all variables
 * Properly Trim spaces for easy drag and dropping of icon paths
 * Properly look for Chrome location in /Applications (it uses the first one it finds)
-* Make the new App whereever it's called from
+* Make the new App wherever it's called from
 * Your Profile is placed in the correct location (in the Bundle) no matter where you move the app
 
 ## Usage
-* Place chrome-ssb.sh in your path (well anywhere)
+* Place chrome-ssb.sh in your path or somewhere convenient to call from
 * Run chrome-ssb.sh wherever you want
 
-Note: Finder may not pick up the Icon unless you move the App.  This is a pain - if you know a workaround, please send a pull request...
+**Note:** Finder may not pick up the icon (shows up as invisible) if you have the creation target folder active/open. You can make it show up by moving the App to a different folder. If you know a workaround, please send a pull request...
 
 ## TODO
 * Better Icon Processing
