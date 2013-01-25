@@ -41,8 +41,12 @@ mkdir -p  "$resourcePath" "$execPath" "$profilePath"
 
 # convert the icon and copy into Resources
 if [ -f "$icon" ] ; then
-    sips -s format tiff "$icon" --out "$resourcePath/icon.tiff" --resampleWidth 128 >& /dev/null
-    tiff2icns -noLarge "$resourcePath/icon.tiff" >& /dev/null
+    if [ ${icon: -5} == ".icns" ] ; then
+        cp "$icon" "$resourcePath/icon.icns"
+    else
+        sips -s format tiff "$icon" --out "$resourcePath/icon.tiff" --resampleWidth 128 >& /dev/null
+        tiff2icns -noLarge "$resourcePath/icon.tiff" >& /dev/null
+    fi
 fi
 
 ### Create the executable
