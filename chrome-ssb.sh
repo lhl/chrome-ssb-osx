@@ -26,6 +26,7 @@ icon=`trim "$inputline"`
 
 #### Find Chrome
 chromePath=`mdfind "kMDItemCFBundleIdentifier == 'com.google.Chrome'" | head -n 1`
+chromeExecPath="$chromePath/Contents/MacOS/Google Chrome"
 
 # Let's make the app whereever we call the script from...
 appRoot=`pwd`
@@ -35,6 +36,7 @@ resourcePath="$appRoot/$name.app/Contents/Resources"
 execPath="$appRoot/$name.app/Contents/MacOS" 
 profilePath="$appRoot/$name.app/Contents/Profile"
 plistPath="$appRoot/$name.app/Contents/Info.plist"
+versionsPath="$appRoot/$name.app/Contents/Versions"
 
 # make the directories
 mkdir -p  "$resourcePath" "$execPath" "$profilePath"
@@ -49,11 +51,14 @@ if [ -f "$icon" ] ; then
     fi
 fi
 
-### Create the executable
+### link the chrome executable
+ln -s "$chromeExecPath" "$execPath/$name Chrome"
+
+### Create the wrapper executable
 cat >"$execPath/$name" <<EOF
 #!/bin/bash
 ABSPATH=\$(cd "\$(dirname "\$0")"; pwd)
-exec "$chromePath"  --app="$url" --user-data-dir="\$ABSPATH/../Profile" "\$@"
+exec "\$ABSPATH/$name Chrome" --app="$url" --user-data-dir="\$ABSPATH/../Profile" "\$@"
 EOF
 chmod +x "$execPath/$name"
 
@@ -71,4 +76,16 @@ cat > "$plistPath" <<EOF
 <string>icon.icns</string>
 </dict>
 </plist>
+EOF
+
+### link the Versions directory
+ln -s "$chromePath/Contents/Versions" "$versionsPath"
+
+### create a default (en) localization to name the app
+mkdir -p "$resourcePath/en.lproj"
+cat > "$resourcePath/en.lproj/InfoPlist.strings" <<EOF
+CFBundleDisplayName = "$name";
+CFBundleGetInfoString = "$name, Copyright 2012 Google Inc. Alle Rechte vorbehalten.";
+CFBundleName = "$name";
+NSHumanReadableCopyright = "Copyright 2012 Google Inc. Alle Rechte vorbehalten.";
 EOF
