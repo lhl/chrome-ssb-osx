@@ -25,7 +25,7 @@ icon=`trim "$inputline"`
 
 
 #### Find Chrome
-chromePath=`find /Applications | grep -e 'Google Chrome$' | head -n 1`
+chromePath=`mdfind "kMDItemCFBundleIdentifier == 'com.google.Chrome'" | head -n 1`
 
 # Let's make the app whereever we call the script from...
 appRoot=`pwd`
