@@ -11,7 +11,7 @@ trim() {
 
 
 ### Get Input
-echo "What should the Application be called (no spaces allowed e.g. GCal)?"
+echo "What should the Application be called?"
 read inputline
 name=`trim "$inputline"`
 
@@ -85,7 +85,5 @@ ln -s "$chromePath/Contents/Versions" "$versionsPath"
 mkdir -p "$resourcePath/en.lproj"
 cat > "$resourcePath/en.lproj/InfoPlist.strings" <<EOF
 CFBundleDisplayName = "$name";
-CFBundleGetInfoString = "$name, Copyright 2012 Google Inc. Alle Rechte vorbehalten.";
 CFBundleName = "$name";
-NSHumanReadableCopyright = "Copyright 2012 Google Inc. Alle Rechte vorbehalten.";
 EOF
