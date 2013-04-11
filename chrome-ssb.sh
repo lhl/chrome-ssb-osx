@@ -24,8 +24,15 @@ read inputline
 icon=`trim "$inputline"`
 
 
-#### Find Chrome
-chromePath=`mdfind "kMDItemCFBundleIdentifier == 'com.google.Chrome'" | head -n 1`
+#### Find Chrome. If its not in the standard spot, try using spotlight.
+chromePath="/Applications/Google Chrome.app"
+if [ ! -d "$chromePath" ] ; then
+    chromePath=`mdfind "kMDItemCFBundleIdentifier == 'com.google.Chrome'" | head -n 1`
+    if [ -z $chromePath ] ; then
+	echo "ERROR. Where is chrome installed?!?!"
+	exit 1
+    fi
+fi
 chromeExecPath="$chromePath/Contents/MacOS/Google Chrome"
 
 # Let's make the app whereever we call the script from...
