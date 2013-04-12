@@ -28,7 +28,7 @@ icon=`trim "$inputline"`
 chromePath="/Applications/Google Chrome.app"
 if [ ! -d "$chromePath" ] ; then
     chromePath=`mdfind "kMDItemCFBundleIdentifier == 'com.google.Chrome'" | head -n 1`
-    if [ -z $chromePath ] ; then
+    if [ -z "$chromePath" ] ; then
 	echo "ERROR. Where is chrome installed?!?!"
 	exit 1
     fi
