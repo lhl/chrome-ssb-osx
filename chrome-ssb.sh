@@ -94,3 +94,10 @@ cat > "$resourcePath/en.lproj/InfoPlist.strings" <<EOF
 CFBundleDisplayName = "$name";
 CFBundleName = "$name";
 EOF
+
+### tell the user where the app is located so that they can move it to
+### /Applications if they wish
+/bin/cat <<EOF
+Finished! The app has been installed in 
+$appRoot/$name.app
+EOF
