@@ -6,20 +6,20 @@ trim() {
   local var=$1
   var="${var#"${var%%[![:space:]]*}"}"   # remove leading whitespace characters
   var="${var%"${var##*[![:space:]]}"}"   # remove trailing whitespace characters
-  echo -n "$var"
+  /bin/echo -n "$var"
 }
 
 
 ### Get Input
-echo "What should the Application be called?"
+/bin/echo "What should the Application be called?"
 read inputline
 name=`trim "$inputline"`
 
-echo "What is the url (e.g. https://www.google.com/calendar/render)?"
+/bin/echo "What is the url (e.g. https://www.google.com/calendar/render)?"
 read inputline
 url=`trim "$inputline"`
 
-echo "What is the full path to the icon (e.g. /Users/username/Desktop/icon.png)?"
+/bin/echo "What is the full path to the icon (e.g. /Users/username/Desktop/icon.png)?"
 read inputline
 icon=`trim "$inputline"`
 
@@ -29,14 +29,14 @@ chromePath="/Applications/Google Chrome.app"
 if [ ! -d "$chromePath" ] ; then
     chromePath=`mdfind "kMDItemCFBundleIdentifier == 'com.google.Chrome'" | head -n 1`
     if [ -z "$chromePath" ] ; then
-	echo "ERROR. Where is chrome installed?!?!"
+	/bin/echo "ERROR. Where is chrome installed?!?!"
 	exit 1
     fi
 fi
 chromeExecPath="$chromePath/Contents/MacOS/Google Chrome"
 
 # Let's make the app whereever we call the script from...
-appRoot=`pwd`
+appRoot=`/bin/pwd`
 
 # various paths used when creating the app
 resourcePath="$appRoot/$name.app/Contents/Resources"
@@ -46,12 +46,12 @@ plistPath="$appRoot/$name.app/Contents/Info.plist"
 versionsPath="$appRoot/$name.app/Contents/Versions"
 
 # make the directories
-mkdir -p  "$resourcePath" "$execPath" "$profilePath"
+/bin/mkdir -p  "$resourcePath" "$execPath" "$profilePath"
 
 # convert the icon and copy into Resources
 if [ -f "$icon" ] ; then
     if [ ${icon: -5} == ".icns" ] ; then
-        cp "$icon" "$resourcePath/icon.icns"
+        /bin/cp "$icon" "$resourcePath/icon.icns"
     else
         sips -s format tiff "$icon" --out "$resourcePath/icon.tiff" --resampleWidth 128 >& /dev/null
         tiff2icns -noLarge "$resourcePath/icon.tiff" >& /dev/null
@@ -59,18 +59,18 @@ if [ -f "$icon" ] ; then
 fi
 
 ### link the chrome executable
-ln -s "$chromeExecPath" "$execPath/$name Chrome"
+/bin/ln -s "$chromeExecPath" "$execPath/$name Chrome"
 
 ### Create the wrapper executable
-cat >"$execPath/$name" <<EOF
+/bin/cat >"$execPath/$name" <<EOF
 #!/bin/bash
 ABSPATH=\$(cd "\$(dirname "\$0")"; pwd)
 exec "\$ABSPATH/$name Chrome" --app="$url" --user-data-dir="\$ABSPATH/../Profile" "\$@"
 EOF
-chmod +x "$execPath/$name"
+/bin/chmod +x "$execPath/$name"
 
 ### create the Info.plist 
-cat > "$plistPath" <<EOF
+/bin/cat > "$plistPath" <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" “http://www.apple.com/DTDs/PropertyList-1.0.dtd”>
 <plist version=”1.0″>
@@ -86,11 +86,11 @@ cat > "$plistPath" <<EOF
 EOF
 
 ### link the Versions directory
-ln -s "$chromePath/Contents/Versions" "$versionsPath"
+/bin/ln -s "$chromePath/Contents/Versions" "$versionsPath"
 
 ### create a default (en) localization to name the app
-mkdir -p "$resourcePath/en.lproj"
-cat > "$resourcePath/en.lproj/InfoPlist.strings" <<EOF
+/bin/mkdir -p "$resourcePath/en.lproj"
+/bin/cat > "$resourcePath/en.lproj/InfoPlist.strings" <<EOF
 CFBundleDisplayName = "$name";
 CFBundleName = "$name";
 EOF
