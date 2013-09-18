@@ -81,6 +81,8 @@ EOF
 <string>$name</string>
 <key>CFBundleIconFile</key>
 <string>icon.icns</string>
+<key>NSHighResolutionCapable</key>
+<string>True</string>
 </dict>
 </plist>
 EOF
