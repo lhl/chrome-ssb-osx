@@ -18,8 +18,7 @@ I've updated it a bit to work better:
 **Note:** Finder may not pick up the icon (shows up as invisible) if you have the creation target folder active/open. You can make it show up by moving the App to a different folder. If you know a workaround, please send a pull request...
 
 ## Notes
-* This script creates a symlink to Chrome based on the initial lookup so this needs to be regenerated if you are moving Chrome. 
-* gzuercher reported that to open PDFs, a hard link is required. If you know what you are doing, take a look at the issue for more details: https://github.com/lhl/chrome-ssb-osx/issues/8
+* This script hardcodes the path to Chrome based on the initial lookup so this needs to be regenerated if you are moving Chrome. 
 
 ## TODO
 * Better Icon Processing
