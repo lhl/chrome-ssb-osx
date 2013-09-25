@@ -62,8 +62,8 @@ fi
 /bin/cat >"$execPath/$name" <<EOF
 #!/bin/sh
 iam="\$0"
-profDir=\$(dirname "\$iam")
-profDir=\$(dirname "\$profDir")
+profDir=\$(/usr/bin/dirname "\$iam")
+profDir=\$(/usr/bin/dirname "\$profDir")
 profDir="\$profDir/Profile"
 exec '$chromeExecPath' --app="$url" --user-data-dir="\$profDir" "\$@"
 EOF
