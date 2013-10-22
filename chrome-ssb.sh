@@ -58,14 +58,14 @@ if [ -f "$icon" ] ; then
     fi
 fi
 
+### link the chrome executable
+/bin/ln -s "$chromeExecPath" "$execPath/$name Chrome"
+
 ### Create the wrapper executable
 /bin/cat >"$execPath/$name" <<EOF
 #!/bin/sh
-iam="\$0"
-profDir=\$(/usr/bin/dirname "\$iam")
-profDir=\$(/usr/bin/dirname "\$profDir")
-profDir="\$profDir/Profile"
-exec '$chromeExecPath' --app="$url" --user-data-dir="\$profDir" "\$@"
+ABSPATH=\$(cd "\$(dirname "\$0")"; pwd)
+exec "\$ABSPATH/$name Chrome" --app="$url" --user-data-dir="\$ABSPATH/../Profile" "\$@"
 EOF
 /bin/chmod +x "$execPath/$name"
 
