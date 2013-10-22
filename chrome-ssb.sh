@@ -58,7 +58,7 @@ if [ -f "$icon" ] ; then
     fi
 fi
 
-### link the chrome executable
+### link the chrome executable - required for proper app switching/behavior
 /bin/ln -s "$chromeExecPath" "$execPath/$name Chrome"
 
 ### Create the wrapper executable
