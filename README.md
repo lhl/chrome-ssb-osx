@@ -14,15 +14,16 @@ I've updated it a bit to work better:
 ## Usage
 * Place chrome-ssb.sh in your path or somewhere convenient to call from
 * Run chrome-ssb.sh wherever you want
+* You can also move the created app anywhere you want without issues
 
 **Note:** Finder may not pick up the icon (shows up as invisible) if you have the creation target folder active/open. You can make it show up by moving the App to a different folder. If you know a workaround, please send a pull request...
 
 ## Notes
-* This script hardcodes the path to Chrome based on the initial lookup so this needs to be regenerated if you are moving Chrome. 
+* This script now makes a copy of the 'Google Chrome' launcher executable stub (it is pretty small, about 13KB) instead of symlinking to solve 10.9 compatibility issues (see #22). The executable points to a specific version of the Google Chrome Framework (../Versions/[VERSION]/Google Chrome Framework.framework/Google Chrome Framework). I don't know what the behavior will be as updates are released...
 
 ## TODO
 * Better Icon Processing
-  * : http://www.amnoid.de/icns/makeicns.html
+  * http://www.amnoid.de/icns/makeicns.html
   * http://superuser.com/questions/133784/manipulate-mac-os-x-file-icons-from-automator-or-command-line
 
 ## License
