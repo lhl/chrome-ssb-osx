@@ -58,8 +58,9 @@ if [ -f "$icon" ] ; then
     fi
 fi
 
-### link the chrome executable - required for proper app switching/behavior
-/bin/ln -s "$chromeExecPath" "$execPath/$name Chrome"
+# In Mavericks, symlinking no longer works (see #22) however if we copy
+# the binary stub it does.  Fine.
+/bin/cp "$chromeExecPath" "$execPath/$name Chrome"
 
 ### Create the wrapper executable
 /bin/cat >"$execPath/$name" <<EOF
