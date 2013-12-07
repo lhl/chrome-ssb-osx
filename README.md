@@ -20,6 +20,7 @@ I've updated it a bit to work better:
 
 ## Notes
 * This script now makes a copy of the 'Google Chrome' launcher executable stub (it is pretty small, about 13KB) instead of symlinking to solve 10.9 compatibility issues (see #22). The executable points to a specific version of the Google Chrome Framework (../Versions/[VERSION]/Google Chrome Framework.framework/Google Chrome Framework). I don't know what the behavior will be as updates are released...
+* Copying the launcher executable instead of symlinking will break OS X Gatekeeper's code signing. This shouldn't normally be a problem, but is discussed in depth in Issue #23
 
 ## TODO
 * Better Icon Processing
