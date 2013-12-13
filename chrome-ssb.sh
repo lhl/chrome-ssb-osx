@@ -58,14 +58,14 @@ if [ -f "$icon" ] ; then
     fi
 fi
 
-# In Mavericks, symlinking no longer works (see #22) however if we copy
-# the binary stub it does.  Fine.
-/bin/cp "$chromeExecPath" "$execPath/$name Chrome"
+# Save a symlink to the location of the Chrome executable to be copied when the SSB is started.
+/bin/ln -s "$chromeExecPath" "$execPath/Chrome"
 
 ### Create the wrapper executable
 /bin/cat >"$execPath/$name" <<EOF
 #!/bin/sh
 ABSPATH=\$(cd "\$(dirname "\$0")"; pwd)
+/bin/cp "\$ABSPATH/Chrome" "\$ABSPATH/$name Chrome"
 exec "\$ABSPATH/$name Chrome" --app="$url" --user-data-dir="\$ABSPATH/../Profile" "\$@"
 EOF
 /bin/chmod +x "$execPath/$name"
