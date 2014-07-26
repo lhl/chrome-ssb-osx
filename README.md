@@ -1,5 +1,17 @@
 chrome-ssb
 ==========
+
+2014-07-26 UPDATE: There are currently some outstanding potential issues between OS X and Chrome updates that I really don't have time to look at (see the open issues).  If you need a rock solid modern SSB, I suggest perhaps looking at node-webkit for building SSBs.
+
+You'll need modern node/npm but other than that it's actually pretty straightforward to setup SSBs...
+
+* https://github.com/rogerwang/node-webkit
+* https://github.com/mllrsohn/node-webkit-builder
+* https://github.com/user4815162342/nw-ssb
+* https://github.com/chagel/gmail-ssb
+
+---
+
 Simple script for making Chrome SSBs on OS X
 
 This is an update of [Bracken King](https://twitter.com/brackenthebox)'s original script published in [this 2010 article](http://www.lessannoyingcrm.com/articles/149/Create_application_shortcuts_in_Google_Chrome_on_a_Mac).
