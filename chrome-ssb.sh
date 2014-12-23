@@ -84,6 +84,10 @@ EOF
 <string>icon.icns</string>
 <key>NSHighResolutionCapable</key>
 <string>True</string>
+<key>KSProductID</key>
+<string>com.google.Chrome.$name</string>
+<key>CFBundleIdentifier</key>
+<string>com.google.Chrome.$name</string>
 </dict>
 </plist>
 EOF
