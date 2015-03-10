@@ -10,6 +10,8 @@ You'll need modern node/npm but other than that it's actually pretty straightfor
 * https://github.com/user4815162342/nw-ssb
 * https://github.com/chagel/gmail-ssb
 
+Also, check out: https://github.com/dmarmor/osx-chrome-ssb-gui/
+
 ---
 
 Simple script for making Chrome SSBs on OS X
