@@ -53,7 +53,7 @@ if [ -f "$icon" ] ; then
     if [ ${icon: -5} == ".icns" ] ; then
         /bin/cp "$icon" "$resourcePath/icon.icns"
     else
-        sips -s format tiff "$icon" --out "$resourcePath/icon.tiff" --resampleWidth 128 >& /dev/null
+        sips -s format tiff "$icon" --out "$resourcePath/icon.tiff" --resampleHeightWidth 128 128 >& /dev/null
         tiff2icns -noLarge "$resourcePath/icon.tiff" >& /dev/null
     fi
 fi
