@@ -1,7 +1,7 @@
 chrome-ssb
 ==========
 
-2015-08-19 UPDATE: Mac users may want to check out [Epicrhrome](https://github.com/dmarmor/epichrome) or [MacPin](https://github.com/kfix/MacPin) for an actively developed SSBs on OS X. I am also beginning work on a [pyssb](https://github.com/lhl/pyssb), a PyQT5-based SSB project (focused for my personal use on Arch Linux, but it could be cross-platform if anyone wanted to contribute). I'm happy to merge any updates, but otherwise, consider this project deprecated.
+2015-08-19 UPDATE: Mac users may want to check out [Epichrome](https://github.com/dmarmor/epichrome) or [MacPin](https://github.com/kfix/MacPin) for an actively developed SSBs on OS X. I am also beginning work on a [pyssb](https://github.com/lhl/pyssb), a PyQT5-based SSB project (focused for my personal use on Arch Linux, but it could be cross-platform if anyone wanted to contribute). I'm happy to merge any updates, but otherwise, consider this project deprecated.
 
 ---
 
