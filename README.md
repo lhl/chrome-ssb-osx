@@ -1,6 +1,8 @@
 chrome-ssb
 ==========
 
+2015-08-19 UPDATE: Mac users may want to check out [MacPin](https://github.com/kfix/MacPin) for an actively developed SSB on OS X. I am also beginning work on a [pyssb](https://github.com/lhl/pyssb), a PyQT5-based SSB project (focused for my personal use on Arch Linux, but it could be cross-platform if anyone wanted to contribute)
+
 2014-07-26 UPDATE: There are currently some outstanding potential issues between OS X and Chrome updates that I really don't have time to look at (see the open issues).  If you need a rock solid modern SSB, I suggest perhaps looking at node-webkit for building SSBs.
 
 You'll need modern node/npm but other than that it's actually pretty straightforward to setup SSBs...
